@@ -1,10 +1,8 @@
-package com.payment;
+package com.capgemini.tmobile;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -12,25 +10,16 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import static springfox.documentation.spi.DocumentationType.*;
-
 @SpringBootApplication
 @EnableSwagger2
-public class PaymentApplication {
+public class BillingAccountServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PaymentApplication.class, args);
+		SpringApplication.run(BillingAccountServiceApplication.class, args);
 	}
 
 	@Bean
 	public Docket api() {
-		return new Docket(SWAGGER_2).select().apis(RequestHandlerSelectors.any())
-				.paths(PathSelectors.any()).build();
+		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any()).paths(PathSelectors.any()).build();
 	}
-
-	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder.build();
-	}
-
 }
